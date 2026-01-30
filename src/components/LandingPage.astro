@@ -1,0 +1,689 @@
+---
+import { useTranslations } from "../i18n/utils";
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  lang: "es" | "en";
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={t("meta.title")} description={t("meta.description")}>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav-content">
+      <a href={lang === "es" ? "/es/" : "/en/"} class="logo">
+        <span class="logo-icon">📍</span>
+        <span class="logo-text">El Parche</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">{t("nav.features")}</a>
+        <a href="#how-it-works">{t("nav.howItWorks")}</a>
+        <a href="#testimonials">{t("nav.testimonials")}</a>
+        <a href="#cta" class="download-nav-btn">{t("nav.download")}</a>
+        <a href={lang === "es" ? "/en/" : "/es/"} class="lang-switcher">
+          {lang === "es" ? "EN" : "ES"}
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-container">
+      <div class="hero-header">
+        <span class="hero-tag">{t("hero.badge")}</span>
+        <h1 class="hero-title">{t("hero.title")}</h1>
+        <p class="hero-desc">{t("hero.description")}</p>
+        <div class="hero-downloads">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+            alt="App Store"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            alt="Google Play"
+          />
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mockup-container">
+          <img src="/hero-mockup.png" alt="App Mockup" class="hero-mockup" />
+          <!-- Floating avatars like in the image -->
+          <div class="avatar av-1">👩</div>
+          <div class="avatar av-2">🕺</div>
+          <div class="avatar av-3">🎧</div>
+          <div class="avatar av-4">🎸</div>
+          <div class="avatar av-5">✨</div>
+          <div class="avatar av-6">🔥</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="features-header">
+        <h2 class="section-title">{t("feature.main.title")}</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card glass">
+          <div class="card-icon">🛍️</div>
+          <h3>{t("feature.1.title")}</h3>
+          <p>{t("feature.1.desc")}</p>
+          <div class="card-mockup">
+            <div class="mini-card"></div>
+          </div>
+        </div>
+        <div class="feature-card glass">
+          <div class="card-icon">🎯</div>
+          <h3>{t("feature.2.title")}</h3>
+          <p>{t("feature.2.desc")}</p>
+          <div class="card-mockup">
+            <div class="mini-profile"></div>
+          </div>
+        </div>
+        <div class="feature-card glass">
+          <div class="card-icon">💳</div>
+          <h3>{t("feature.3.title")}</h3>
+          <p>{t("feature.3.desc")}</p>
+          <div class="card-mockup">
+            <div class="mini-payment"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps Section -->
+  <section id="how-it-works" class="steps">
+    <div class="container steps-layout">
+      <div class="steps-content">
+        <h2 class="section-title-alt">{t("steps.title")}</h2>
+        <p class="section-desc">{t("steps.description")}</p>
+
+        <div class="steps-list">
+          <div class="step-card">
+            <div class="step-info">
+              <span class="step-tag">{t("steps.1.tag")}</span>
+              <h4>{t("steps.1.title")}</h4>
+              <p>{t("steps.1.desc")}</p>
+            </div>
+            <div class="step-indicator">01</div>
+          </div>
+          <div class="step-card">
+            <div class="step-info">
+              <span class="step-tag">{t("steps.2.tag")}</span>
+              <h4>{t("steps.2.title")}</h4>
+              <p>{t("steps.2.desc")}</p>
+            </div>
+            <div class="step-indicator">02</div>
+          </div>
+          <div class="step-card">
+            <div class="step-info">
+              <span class="step-tag">{t("steps.3.tag")}</span>
+              <h4>{t("steps.3.title")}</h4>
+              <p>{t("steps.3.desc")}</p>
+            </div>
+            <div class="step-indicator">03</div>
+          </div>
+          <div class="step-card">
+            <div class="step-info">
+              <span class="step-tag">{t("steps.4.tag")}</span>
+              <h4>{t("steps.4.title")}</h4>
+              <p>{t("steps.4.desc")}</p>
+            </div>
+            <div class="step-indicator">04</div>
+          </div>
+        </div>
+      </div>
+      <div class="steps-visual">
+        <img src="/hero-mockup.png" alt="App UI" class="steps-mockup" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <h2 class="section-title-centered">{t("testimonials.title")}</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"{t("testimonials.1.text")}"</p>
+          <div class="user">
+            <div class="user-avatar">👤</div>
+            <span>{t("testimonials.1.name")}</span>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"{t("testimonials.2.text")}"</p>
+          <div class="user">
+            <div class="user-avatar">👤</div>
+            <span>{t("testimonials.2.name")}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-container">
+        <div class="cta-text">
+          <span class="cta-tag">Ready to Elevate Your Weekend?</span>
+          <h2>{t("cta.title")}</h2>
+          <p>{t("cta.description")}</p>
+          <div class="download-btns">
+            <a href="#" class="store-link">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+                alt="App Store"
+              />
+            </a>
+            <a href="#" class="store-link">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Google Play"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="cta-visual">
+          <img src="/hero-mockup.png" alt="App Final" class="cta-mockup" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="/" class="logo">
+          <span class="logo-icon">📍</span>
+          <span class="logo-text">El Parche</span>
+        </a>
+        <div class="footer-links">
+          <a href="/es/">{lang === "es" ? "Inicio" : "Home"}</a>
+          <a href="#features">{t("nav.features")}</a>
+          <a href="#how-it-works">{t("nav.howItWorks")}</a>
+          <a href="#testimonials">{t("nav.testimonials")}</a>
+        </div>
+        <div class="footer-social">
+          <div class="social-circle">IG</div>
+          <div class="social-circle">TK</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>{t("footer.rights")}</p>
+        <div class="legal-links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* Premium Palette & Layout */
+  :root {
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.7);
+    --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Nav */
+  .nav {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+  }
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 800;
+    font-size: 1.4rem;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .nav-links a:not(.download-nav-btn):not(.lang-switcher) {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  .nav-links a:hover {
+    color: var(--primary);
+  }
+  .download-nav-btn {
+    background: #111;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border-radius: 99px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 180px 0 100px;
+    background: radial-gradient(circle at 50% 10%, #fff7ed 0%, #ffffff 50%);
+    text-align: center;
+  }
+  .hero-header {
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  .hero-tag {
+    color: var(--primary);
+    background: #fff7ed;
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    display: inline-block;
+  }
+  .hero-title {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+    letter-spacing: -3px;
+  }
+  .hero-desc {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  .hero-downloads {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .hero-downloads img {
+    height: 48px;
+    cursor: pointer;
+  }
+
+  .hero-visual {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .mockup-container {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-mockup {
+    width: 380px;
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12));
+    border-radius: 40px;
+  }
+
+  /* Avatar circles like in the image */
+  .avatar {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    animation: float 4s ease-in-out infinite;
+  }
+  .av-1 {
+    top: 0;
+    left: -120px;
+    animation-delay: 0s;
+  }
+  .av-2 {
+    top: 150px;
+    left: -200px;
+    animation-delay: 1s;
+  }
+  .av-3 {
+    top: 350px;
+    left: -100px;
+    animation-delay: 2s;
+  }
+  .av-4 {
+    top: 0;
+    right: -120px;
+    animation-delay: 0.5s;
+  }
+  .av-5 {
+    top: 200px;
+    right: -180px;
+    animation-delay: 1.5s;
+  }
+  .av-6 {
+    top: 380px;
+    right: -80px;
+    animation-delay: 2.5s;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  /* Features */
+  .features {
+    padding: 100px 0;
+  }
+  .section-title {
+    font-size: 3rem;
+    max-width: 600px;
+    margin-bottom: 4rem;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .feature-card {
+    padding: 3rem;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--bg-light);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow);
+    background: white;
+  }
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .feature-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  /* Steps */
+  .steps {
+    padding: 120px 0;
+    background: #fafafa;
+  }
+  .steps-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .section-title-alt {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+    max-width: 450px;
+  }
+  .steps-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .step-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: 0.3s;
+  }
+  .step-card:hover {
+    border-color: var(--primary);
+  }
+  .step-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .step-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .step-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  .step-indicator {
+    font-size: 1.5rem;
+    font-weight: 800;
+    opacity: 0.1;
+  }
+  .steps-mockup {
+    width: 100%;
+    max-width: 500px;
+    filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.1));
+  }
+
+  /* Testimonials */
+  .testimonials {
+    padding: 100px 0;
+  }
+  .section-title-centered {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .testimonial-card {
+    padding: 3rem;
+    background: #f8fafc;
+    border-radius: 24px;
+  }
+  .stars {
+    color: #f59e0b;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-card p {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 100px 0;
+  }
+  .cta-container {
+    background: #111;
+    border-radius: 48px;
+    padding: 6rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+  }
+  .cta-tag {
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .cta-text h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+  }
+  .cta-text p {
+    opacity: 0.7;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  .download-btns {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .store-link img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+  .cta-mockup {
+    width: 450px;
+    transform: rotate(5deg) translateY(60px);
+  }
+
+  /* Footer */
+  .footer {
+    padding: 80px 0 40px;
+    border-top: 1px solid #efefef;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 3rem;
+  }
+  .footer-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+  }
+  .social-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    border-top: 1px solid #f5f5f5;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .legal-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+    .hero-mockup {
+      width: 300px;
+    }
+    .features-grid,
+    .steps-layout,
+    .testimonials-grid,
+    .cta-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero-downloads,
+    .download-btns {
+      justify-content: center;
+    }
+    .avatar {
+      display: none;
+    }
+    .steps-layout {
+      flex-direction: column;
+    }
+    .cta-mockup {
+      width: 300px;
+      margin: 0 auto;
+      transform: none;
+    }
+    .cta-container {
+      padding: 4rem 2rem;
+    }
+    .footer-top {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+</style>
