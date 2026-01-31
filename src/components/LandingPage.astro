@@ -27,6 +27,36 @@ const t = useTranslations(lang);
           {lang === "es" ? "EN" : "ES"}
         </a>
       </div>
+      <button class="mobile-menu-btn" aria-label="Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="mobile-menu">
+        <div class="mobile-menu-header">
+          <a href="#" class="logo">
+            <span class="logo-icon">📍</span>
+            <span class="logo-text">El Parche</span>
+          </a>
+          <button class="mobile-menu-close" aria-label="Close Menu">✕</button>
+        </div>
+        <div class="mobile-menu-links">
+          <a href="#features" class="mobile-link">{t("nav.features")}</a>
+          <a href="#how-it-works" class="mobile-link">{t("nav.howItWorks")}</a>
+          <a href="#testimonials" class="mobile-link">{t("nav.testimonials")}</a
+          >
+          <a
+            href={lang === "es" ? "/en/" : "/es/"}
+            class="mobile-link lang-mobile"
+          >
+            {lang === "es" ? "Switch to English" : "Cambiar a Español"}
+          </a>
+          <a href="#cta" class="download-nav-btn mobile-link"
+            >{t("nav.download")}</a
+          >
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -51,7 +81,7 @@ const t = useTranslations(lang);
 
       <div class="hero-visual">
         <div class="mockup-container">
-          <img src="/hero-mockup.png" alt="App Mockup" class="hero-mockup" />
+          <img src="/hero_image.png" alt="Hero Image" class="hero-mockup" />
           <!-- Floating avatars like in the image -->
           <div class="avatar av-1">👩</div>
           <div class="avatar av-2">🕺</div>
@@ -196,7 +226,7 @@ const t = useTranslations(lang);
           </div>
         </div>
         <div class="cta-visual">
-          <img src="/hero-mockup.png" alt="App Final" class="cta-mockup" />
+          <img src="/hero_image.png" alt="App Final" class="cta-mockup" />
         </div>
       </div>
     </div>
@@ -233,6 +263,73 @@ const t = useTranslations(lang);
 </Layout>
 
 <style>
+  /* Mobile Menu Styles */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 2000;
+  }
+  .hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: 0.3s;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 1500;
+    padding: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+  .mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+  }
+  .mobile-link {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .lang-mobile {
+    margin-top: 1rem;
+    color: var(--primary);
+    font-size: 1.2rem;
+  }
+
   /* Premium Palette & Layout */
   :root {
     --text-main: #0f172a;
@@ -348,10 +445,13 @@ const t = useTranslations(lang);
     position: relative;
     display: inline-block;
   }
+
   .hero-mockup {
-    width: 380px;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
     filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12));
-    border-radius: 40px;
+    border-radius: 24px;
   }
 
   /* Avatar circles like in the image */
@@ -367,35 +467,36 @@ const t = useTranslations(lang);
     font-size: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     animation: float 4s ease-in-out infinite;
+    z-index: 10;
   }
   .av-1 {
-    top: 0;
-    left: -120px;
+    top: -30px;
+    left: 40px;
     animation-delay: 0s;
   }
   .av-2 {
-    top: 150px;
-    left: -200px;
+    top: 40%;
+    left: -40px;
     animation-delay: 1s;
   }
   .av-3 {
-    top: 350px;
-    left: -100px;
+    bottom: -30px;
+    left: 80px;
     animation-delay: 2s;
   }
   .av-4 {
-    top: 0;
-    right: -120px;
+    top: -20px;
+    right: 40px;
     animation-delay: 0.5s;
   }
   .av-5 {
-    top: 200px;
-    right: -180px;
+    top: 50%;
+    right: -30px;
     animation-delay: 1.5s;
   }
   .av-6 {
-    top: 380px;
-    right: -80px;
+    bottom: 40px;
+    right: -20px;
     animation-delay: 2.5s;
   }
 
@@ -650,11 +751,20 @@ const t = useTranslations(lang);
 
   /* Responsive */
   @media (max-width: 1024px) {
+    .nav-links {
+      display: none; /* Hide desktop links */
+    }
+
+    .mobile-menu-btn {
+      display: block; /* Show hamburger */
+    }
+
     .hero-title {
       font-size: 3rem;
     }
     .hero-mockup {
-      width: 300px;
+      width: 100%;
+      max-width: 500px;
     }
     .features-grid,
     .steps-layout,
@@ -687,3 +797,35 @@ const t = useTranslations(lang);
     }
   }
 </style>
+
+<script>
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const closeBtn = document.querySelector(".mobile-menu-close");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  function toggleMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.toggle("active");
+    const isActive = mobileMenu.classList.contains("active");
+    document.body.style.overflow = isActive ? "hidden" : "";
+
+    if (menuBtn) {
+      menuBtn.style.visibility = isActive ? "hidden" : "visible";
+    }
+  }
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", toggleMenu);
+  }
+
+  if (closeBtn && mobileMenu) {
+    closeBtn.addEventListener("click", toggleMenu);
+  }
+
+  if (mobileLinks.length > 0 && mobileMenu) {
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", toggleMenu);
+    });
+  }
+</script>
